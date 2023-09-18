@@ -25,7 +25,7 @@ export function createNavbar() {
 
 
 
-    <ul>
+    <ul id= "menu">
       <li><a href="${homeLink}"><i class="fa fa-home"></i> Início</a></li>
       <li><a href="${coursesLink}"><i class="fa fa-institution"></i> Cursos</a></li>
       <li><a href="${graduatesLink}"><i class="fa fa-graduation-cap"></i> Formandos</a></li>
