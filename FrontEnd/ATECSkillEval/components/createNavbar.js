@@ -12,14 +12,17 @@ export function createNavbar() {
 
   navbar.innerHTML = `
 
-  <li></li>
+
 
   <ul>
+  <li></li>
+  <li></li>
     <li id="user">User</li>
     <li id="role">Role</li>
+    <li></li>
+    <li></li>
   </ul>
 
-  <li></li>
 
 
     <ul>
@@ -31,10 +34,11 @@ export function createNavbar() {
       <li><a href="${evaluationsLink}"><i class="fa fa-reorder"></i> Avaliações</a></li>
     </ul>
 
-    <li></li>
-    <li></li>
+
     
     <ul id="sair">
+    <li></li>
+    <li></li>
       <li><a href="${logoutLink}">SAIR</a></li>
     </ul>
   `;
