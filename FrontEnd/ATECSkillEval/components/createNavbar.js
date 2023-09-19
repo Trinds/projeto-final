@@ -1,10 +1,10 @@
 export function createNavbar() {
   const homeLink = '/';
-  const coursesLink = '/courses';
-  const graduatesLink = '/graduates';
-  const classesLink = '/classes';
-  const reportsLink = '/reports';
-  const evaluationsLink = '/evaluations';
+  const coursesLink = '/pages/courses/';
+  const graduatesLink ='/pages/students/';
+  const classesLink = '/pages/classrooms/';
+  const reportsLink = '/pages/reports/';
+  const evaluationsLink = '/pages/evaluations/';
   const logoutLink = '/logout';
 
   const navbar = document.createElement('div');

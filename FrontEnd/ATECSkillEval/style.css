@@ -3,6 +3,9 @@
   box-sizing: border-box;
 }
 
+#content{
+margin-left: 250px;
+}
 
 :root {
   --celestial-blue: #1996D0;
@@ -13,4 +16,43 @@
   --lapis-lazuli: #115A7D;
   --davys-gray: #4E4E4E;
   --blue-gradient: linear-gradient(71deg, #0047FE 19.35%, #42D7F8 90.12%);
+}
+
+.title
+{
+  background-color: var(--platinum);
+  height: 50px;
+}
+
+table.cool-table {
+border-collapse: collapse;
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+margin-top: 30px;
+font-family: Arial, sans-serif;
+}
+
+table.cool-table caption {
+font-size: 1.5rem;
+margin-bottom: 10px;
+text-align: center;
+}
+
+table.cool-table th {
+padding: 10px;
+text-align: left;
+}
+
+table.cool-table td {
+border: 1px solid #ddd;
+padding: 10px;
+}
+
+table.cool-table tbody tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+table.cool-table tbody tr:hover {
+background-color: var(--carrot-orange);
 }
