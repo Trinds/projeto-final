@@ -1,5 +1,5 @@
 export function createNavbar() {
-  const homeLink = '/';
+  const homeLink = '/pages/overviewpage.html';
   const coursesLink = '/pages/courses/';
   const graduatesLink ='/pages/students/';
   const classesLink = '/pages/classrooms/';
