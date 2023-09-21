@@ -10,7 +10,7 @@
 .navbar ul {
     list-style-type: none;
     padding: 10px;
-    margin: 0.5rem 1.5rem;
+    margin: 1rem 1rem;
 }
 
 .navbar li {
@@ -18,8 +18,16 @@
     color: white;
     margin: 1rem 0;
     border-radius: 0.5rem;
+    width: 100%;
+    display: flex;
 }
 
+.icon{
+    display: flex;
+    width: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
 
 .navbar a {
     text-decoration: none;
