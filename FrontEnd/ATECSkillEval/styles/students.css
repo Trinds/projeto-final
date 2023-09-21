@@ -21,11 +21,45 @@
     line-height: 2.5rem;
     color: #787878;
     font-weight: 700;
-    text-align: center;
     margin-left: 1.25rem;
 }
 
+table{
+    margin: 0 auto;
+    border-radius: 1rem;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.users-table-row{
+    height: 6rem;
+    background-color: white;
+    min-width: 100rem;
+    border-radius: 1rem;
+
+    & div{
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    & img{
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+    }
+
+    & td{
+        padding: 0.3rem 0.75rem;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
 
 form {
     text-align: left; 
+}
+
+.table-container{
+    background-color: var(--platinum);
+    width: 100%;
 }
