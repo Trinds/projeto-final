@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styles/students.css">
+    <link rel="stylesheet" href="../../styles/navbar.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../reset.css">
+    <title>Formandos</title>
+</head>
+<body>
+    <aside id="navbar" class="navbar">
+        <ul>
+            <li id="user">User</li>
+            <li id="role">Role</li>
+        </ul>
+        <ul id="menu">
+            <li><a href="/pages/overviewPage.html"><i class="fa fa-home"></i> Início</a></li>
+            <li><a href="/pages/courses/"><i class="fa-regular fa-bookmark"></i> Cursos</a></li>
+            <li><a href="/pages/students/"><i class="fa-solid fa-user-graduate"></i> Formandos</a></li>
+            <li><a href="/pages/classrooms/"><i class="fa-solid fa-users"></i> Turmas</a></li>
+            <li><a href="/pages/reports/"><i class="fa fa-flag"></i> Relatórios</a></li>
+            <li><a href="/pages/evaluations/"><i class="fa-solid fa-check"></i> Avaliações</a></li>
+        </ul>
+        <ul id="sair">
+            <li><a href="/logout">SAIR</a></li>
+        </ul>
+    </aside>
+
+
+    <div id="content">
+
+        <div class="container">
+            <div class="centered_form">
+                
+                <h1>Inscrição de aluno </h1><br><br>
+                
+                <form action="process_form.php" method="POST" enctype="multipart/form-data">
+
+                    <label for="name">Nome:</label>
+
+                    <input type="text" required
+                    id="name" name="name"
+                    placeholder="Insira o nome"
+                    class="input-field"/><br>
+            
+                    <label for="number">NºTel:</label>
+
+                    <input type="tel" required
+                    id="number" name="number" pattern="[0-9]{10}"
+                    placeholder="Insira o nome"
+                    class="input-field"/><br><br>
+
+                 
+                    <label for="classroom">Turma:</label>
+                    <input type="text" 
+                            id="classroom" name="classroom"
+                            placeholder="Insira a turma"
+                            class="input-field"/><br><br>
+            
+                    <label for="email">Email:</label>
+
+                    <input type="email" required
+                    id="email" name="email"
+                    placeholder="Insira a turma"
+                    class="input-field"/><br><br>
+
+            
+                    <label for="birthdate">Data Nascimento:</label>
+                    <input type="date" id="birthdate" name="birthdate" required><br><br><br><br>
+            
+                    <label for="picture">Importar Foto:</label>
+                    <input type="file" id="picture" name="picture" accept="image/*"><br><br><br>
+            
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        
+        </div>
+
+
+    </div>
+
+</body>
+</html>
