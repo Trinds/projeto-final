@@ -2,18 +2,22 @@
     height: 100%; 
     width: 250px; 
     background: var(--blue-gradient);
-    position: fixed; 
-    overflow: auto;    
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .navbar ul {
     list-style-type: none;
-    margin-left: 30px;
     padding: 10px;
+    margin: 1rem 1.5rem;
 }
 
 .navbar li {
     padding: 20px;
     color: white;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
 }
 
 
@@ -26,6 +30,7 @@
 
 #menu li:hover,#sair li:hover {
     background-color: var(--carrot-orange);
+    cursor: pointer;
 }
 
 #role{

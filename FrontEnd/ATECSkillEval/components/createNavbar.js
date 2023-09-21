@@ -7,7 +7,7 @@ export function createNavbar() {
   const evaluationsLink = '/pages/evaluations/';
   const logoutLink = '/logout';
 
-  const navbar = document.createElement('div');
+  const navbar = document.createElement('aside');
   navbar.className = 'navbar';
 
   navbar.innerHTML = `
@@ -15,12 +15,8 @@ export function createNavbar() {
 
 
   <ul>
-  <li></li>
-  <li></li>
     <li id="user">User</li>
     <li id="role">Role</li>
-    <li></li>
-    <li></li>
   </ul>
 
 
@@ -37,8 +33,6 @@ export function createNavbar() {
 
     
     <ul id="sair">
-    <li></li>
-    <li></li>
       <li><a href="${logoutLink}">SAIR</a></li>
     </ul>
   `;

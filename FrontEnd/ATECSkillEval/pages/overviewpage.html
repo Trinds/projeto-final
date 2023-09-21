@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../styles/overviewpage.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../reset.css">
     <title>Inicio</title>
 </head>
 <body>
+<aside id="navbar" class="navbar">
+    <ul>
+        <li id="user">User</li>
+        <li id="role">Role</li>
+    </ul>
+    <ul id="menu">
+        <li><a href="/pages/overviewpage.html"><i class="fa fa-home"></i> Início</a></li>
+        <li><a href="/pages/courses/"><i class="fa fa-institution"></i> Cursos</a></li>
+        <li><a href="/pages/students/"><i class="fa fa-graduation-cap"></i> Formandos</a></li>
+        <li><a href="/pages/classrooms/"><i class="fa fa-spinner"></i> Turmas</a></li>
+        <li><a href="/pages/reports/"><i class="fa fa-flag"></i> Relatórios</a></li>
+        <li><a href="/pages/evaluations/"><i class="fa fa-reorder"></i> Avaliações</a></li>
+    </ul>
+    <ul id="sair">
+        <li><a href="/logout">SAIR</a></li>
+    </ul>
+</aside>
+<div id="content">
     <div class="top-bar">
         <i class="fa-solid fa-circle-chevron-left fa-xl"></i>
         <div class="search-input">
@@ -17,17 +38,17 @@
         <div class="dashboard-card">
             <i class="fa-solid fa-user-graduate fa-2xl"></i>
             <p>Formandos</p>
-            <h1 class="self-end font-bold text-2xl">560</h1>
+            <h1>560</h1>
         </div>
         <div class="dashboard-card">
             <i class="fa-solid fa-users fa-2xl"></i>
             <p>Turmas</p>
-            <h1 class="self-end font-bold text-2xl">560</h1>
+            <h1>560</h1>
         </div>
         <div class="dashboard-card">
             <i class="fa-regular fa-bookmark fa-2xl"></i>
             <p>Cursos</p>
-            <h1 class="self-end font-bold text-2xl">560</h1>
+            <h1>560</h1>
         </div>
         <div class="dashboard-card">
             <i class="fa-solid fa-check fa-2xl"></i>
@@ -37,8 +58,9 @@
         <div class="dashboard-card">
             <i class="fa-solid fa-circle-user fa-2xl"></i>
             <p>Utilizadores</p>
-            <h1 class="self-end font-bold text-2xl">560</h1>
+            <h1>560</h1>
         </div>
     </div>
+</div>
 </body>
 </html>
