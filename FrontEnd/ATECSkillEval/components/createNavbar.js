@@ -1,3 +1,4 @@
+import '/styles/navbar.css'
 export function createNavbar() {
   const homeLink = '/pages/overviewPage.html';
   const coursesLink = '/pages/courses/';
