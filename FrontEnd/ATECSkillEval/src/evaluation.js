@@ -1,3 +1,5 @@
+import '../reset.css'
+import '../style.css'
 import '../styles/evaluation.css'
 
 
