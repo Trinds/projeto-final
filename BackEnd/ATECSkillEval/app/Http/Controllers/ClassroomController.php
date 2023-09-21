@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClassroomResource;
+use Exception;
 
 class ClassroomController extends Controller
 {
@@ -14,7 +16,12 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $classrooms = Classroom::all();
+            return ClassroomResource::collection($classrooms);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -35,7 +42,12 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $classroom = Classroom::create($request->all());
+            return response()->json(new ClassroomResource($classroom), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -46,7 +58,12 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        //
+        try {
+            $classroom->load('course');
+            return response()->json(new ClassroomResource($classroom), 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -69,7 +86,13 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        //
+        try {
+            $classroom->update($request->all());
+            $classroom->load('course');
+            return response()->json(new ClassroomResource($classroom), 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -80,6 +103,11 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        try {
+            $classroom->delete();
+            return response()->json(['message' => 'Classroom deleted successfully'], 205);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 }

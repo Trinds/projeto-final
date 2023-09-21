@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use Exception;
 use Illuminate\Http\Request;
+use App\Http\Resources\CourseResource;
 
 class CourseController extends Controller
 {
@@ -14,7 +16,12 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $courses = Course::all();
+            return CourseResource::collection($courses);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -35,7 +42,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $course = Course::create($request->all());
+            return response()->json(new CourseResource($course), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -46,7 +58,11 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        try{
+            return response()->json(new CourseResource($course),200);
+        }catch(Exception $e){
+            return response()->json(['error' => $e], 500);
+        }
     }
 
     /**
@@ -69,7 +85,12 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        try{
+            $course->update($request->all());
+            return response()->json(new CourseResource($course),200);
+        }catch(Exception $e){
+            return response()->json(['error' => $e], 500);
+        }
     }
 
     /**
@@ -80,6 +101,11 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        try{
+            $course->delete();
+            return response()->json(['message' => 'Course deleted successfully'],205);
+        }catch(Exception $e){
+            return response()->json(['error' => $e], 500);
+        }
     }
 }
