@@ -12,6 +12,11 @@ class TestSeeder extends Seeder
     public function run()
     {
        
-        factory(App\Test::class, 6)->create();
+        $evaluations = App\Evaluation::all();
+
+        foreach($evaluations as $evaluation)
+        {
+            $evaluation->tests()->saveMany(factory(App\Test::class, 2)->make());
+        }
     }
 }

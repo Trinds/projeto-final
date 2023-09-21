@@ -8,8 +8,8 @@ use App\Test;
 
 class Test_type extends Model
 {
-    public function test()
-    {
-        return $this->belongsTo(Test::class);
-    }
+  public function tests()
+  {
+        return $this->hasMany(Test::class);
+  }
 }

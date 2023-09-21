@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\StudentResource;
+use Exception;
 class StudentController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $students = Student::all();
+            return StudentResource::collection($students);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**

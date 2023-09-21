@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Evaluation;
 use Illuminate\Http\Request;
+use App\Http\Resources\EvaluationResource;
+use Exception;
 
 class EvaluationController extends Controller
 {
@@ -14,7 +16,12 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $evaluations = Evaluation::all();
+            return EvaluationResource::collection($evaluations);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**

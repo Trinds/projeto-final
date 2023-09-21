@@ -13,7 +13,17 @@ class TestTypeSeeder extends Seeder
     public function run()
     {
         
-        factory(Test_type::class, 2)->create();
+      DB::table('test_types')->insert([
+        'type' => 'Tecnico',
+        'created_at' => now(),
+        'updated_at' => now()
+      ]);
+
+      DB::table('test_types')->insert([
+        'type' => 'Psiquico',
+        'created_at' => now(),
+        'updated_at' => now()
+      ]);
 
     }
 }

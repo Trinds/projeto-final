@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('courses', 'CourseController');
 Route::apiResource('classrooms', 'ClassroomController');
+Route::apiResource('students', 'StudentController');
+Route::apiResource('tests', 'TestController');
+Route::apiResource('evaluations', 'EvaluationController');

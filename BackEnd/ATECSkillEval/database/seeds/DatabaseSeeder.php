@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EvaluationSeeder::class);
         $this->call(TestTypeSeeder::class);
         $this->call(TestSeeder::class);
-        $this->call(UserRoleSeeder::class);
+        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
     }
 }
