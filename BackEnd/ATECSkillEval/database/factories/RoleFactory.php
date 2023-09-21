@@ -2,11 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Test_type;
+use App\Role;
 use Faker\Generator as Faker;
 
-$factory->define(Test_type::class, function (Faker $faker) {
+$factory->define(Role::class, function (Faker $faker) {
     return [
-        
+        //
     ];
 });

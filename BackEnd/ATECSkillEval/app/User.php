@@ -3,14 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User_role;
+use App\Role;
 class User extends Model
 {
-    protected $fillable = [
-        'name', 'email', 'password','image','user_role_id'
-    ];
-    public function user_role()
+    public function roles()
     {
-        return $this->belongsTo(User_role::class);
-    }   
+        return $this->belongsToMany(Role::class);
+    }
 }

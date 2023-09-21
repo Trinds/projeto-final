@@ -11,7 +11,5 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $faker->password, 
         'image' => $faker->imageUrl(640, 480),
-        'user_role_id' => rand(1, 2),
-
     ];
 });

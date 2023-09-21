@@ -13,5 +13,7 @@ class StudentSeeder extends Seeder
     {
                  
         factory(App\Student::class, 30)->create();
+
+        
     }
 }

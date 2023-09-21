@@ -17,6 +17,7 @@ class CreateTestTypesTable extends Migration
             $table->id();
             $table->string('type');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

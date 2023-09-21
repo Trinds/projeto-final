@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();  
             $table->string('password');
             $table->string('image')->nullable();
-            $table->foreignId('user_role_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -18,6 +18,7 @@ class CreateEvaluationsTable extends Migration
             $table->foreignId('student_id')->constrained();
             $table->double('score');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

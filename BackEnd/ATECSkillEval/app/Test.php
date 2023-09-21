@@ -15,7 +15,6 @@ class Test extends Model
 
     public function test_type()
     {
-        return $this->hasOne(Test_type::class);
+        return $this->belongsTo(Test_type::class);
     }
-
 }

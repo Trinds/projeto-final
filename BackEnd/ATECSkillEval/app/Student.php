@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    public function classrooms()
+    public function classroom()
     {
-        return $this->belongsToMany(Classroom::class);
+        return $this->belongsTo(Classroom::class);
     }
 
     public function evaluation()
