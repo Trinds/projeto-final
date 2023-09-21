@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\UserResource;
+use Exception;
 class UserController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $users = User::all();
+            return UserResource::collection($users);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -35,7 +41,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $user = User::create($request->all());
+            return response()->json(new UserResource($user), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -46,7 +57,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        try {
+            $user->load('user_role');
+            return response()->json(new UserResource($user), 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -69,7 +85,13 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        try {
+            $user->update($request->all());
+            $user->load('user_role');
+            return response()->json(new UserResource($user), 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -80,6 +102,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        try {
+            $user->delete();
+            return response()->json(['message' => 'User deleted successfully'], 205);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 }

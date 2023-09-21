@@ -7,8 +7,11 @@ use App\User;
 
 class User_role extends Model
 {
+    protected $fillable = [
+        'role',
+    ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }   
 }
