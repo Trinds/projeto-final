@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
-
+use App\Course;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClassroomResource extends JsonResource
@@ -13,16 +13,15 @@ class ClassroomResource extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        return [
-            'id' => $this->id,
-            'course_id' => $this->course_id,
-            'edition' => $this->edition,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
-            'course' => new CourseResource($this->course),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];
-    }
+{
+    return [
+        'id' => $this->id,
+        'edition' => $this->edition,
+        'start_date' => $this->start_date,
+        'end_date' => $this->end_date,
+        'course' => Course::withTrashed()->find($this->course_id),
+        'created_at' => $this->created_at,
+        'updated_at' => $this->updated_at,
+    ];
+}
 }

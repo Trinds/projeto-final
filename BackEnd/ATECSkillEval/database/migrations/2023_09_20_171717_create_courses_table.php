@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name'); 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,5 +29,8 @@ class CreateCoursesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('courses');
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
