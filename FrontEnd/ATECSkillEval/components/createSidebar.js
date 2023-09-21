@@ -1,5 +1,5 @@
 import '/styles/navbar.css'
-export function createNavbar() {
+export function createSidebar() {
   const homeLink = '/pages/overviewPage.html';
   const coursesLink = '/pages/courses/';
   const studentsLink ='/pages/students/';
