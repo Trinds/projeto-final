@@ -14,7 +14,7 @@ margin-left: 250px;
   --carrot-orange: #F2931F;
   --lapis-lazuli: #115A7D;
   --davys-gray: #4E4E4E;
-  --blue-gradient: linear-gradient(71deg, #0047FE 19.35%, #42D7F8 90.12%);
+  --blue-gradient-light: linear-gradient(71deg, #0047FE 19.35%, #42D7F8 90.12%);
   font-family: 'Montserrat', sans-serif;
 }
 

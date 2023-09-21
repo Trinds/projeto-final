@@ -1,6 +1,6 @@
-export default function dashboardCard(name, count, iconClass){
+export default function dashboardCard(name, count, iconClass, backgroundClass){
     const dashboardCard = document.createElement('div')
-    dashboardCard.classList.add('dashboard-card')
+    dashboardCard.classList.add('dashboard-card',`${backgroundClass}`)
     dashboardCard.innerHTML=`
     <div class="left">
                 <h1>${count}</h1>

@@ -12,7 +12,8 @@
     background-color: #42D7F8;
     min-height: 8rem;
     min-width: 17rem;
-    justify-content: space-between ;
+    justify-content: space-between;
+    box-shadow: 0 0 10px 0 rgba(153,153,153,1);
 
     .left{
         display: flex;
@@ -29,10 +30,6 @@
     & i {
         font-size: 3.75rem;
         line-height: 1;
-    }
-
-    & p {
-        color: rgb(78 78 78);
     }
 
     & h1 {

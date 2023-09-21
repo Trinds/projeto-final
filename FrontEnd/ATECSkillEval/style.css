@@ -11,11 +11,65 @@ margin-left: 250px;
   --platinum: #DFE3E6;
   --flame: #E55823;
   --carrot-orange: #F2931F;
-  --lapis-lazuli: #115A7D;
+  --lapis-lazuli: #0047FE;
   --davys-gray: #4E4E4E;
-  --blue-gradient: linear-gradient(71deg, #0047FE 19.35%, #42D7F8 90.12%);
+  --blue-gradient-light: linear-gradient(75deg, #0047FE 19.35%, #42D7F8 90.12%);
+  --blue-gradient-dark: linear-gradient(75deg, #2c67ff 19.35%, #0030ab 90.12%);
+  --orange-gradient-light: linear-gradient(75deg, rgba(242,147,31,1) 0%, rgba(255,204,142,1) 70%);;
+  --orange-gradient-dark: linear-gradient(71deg, rgba(229,88,35,1) 0%, rgba(255,168,136,1) 70%);
+  --gray-gradient-light: linear-gradient(71deg, rgba(120,120,120,1) 0%, rgba(223,227,230,1) 70%);
+  --gray-gradient-dark: linear-gradient(71deg, rgba(130,130,130,1) 0%, rgba(78,78,78,1) 70%);
   font-family: 'Montserrat', sans-serif;
 }
+
+.background-gradient-light-blue{
+  background: var(--blue-gradient-light);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
+.background-gradient-dark-blue{
+  background: var(--blue-gradient-dark);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
+.background-gradient-light-orange{
+  background: var(--orange-gradient-light);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
+.background-gradient-dark-orange{
+  background: var(--orange-gradient-dark);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
+.background-gradient-light-gray{
+  background: var(--gray-gradient-light);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
+.background-gradient-dark-gray{
+  background: var(--gray-gradient-dark);
+  color: white;
+  & i{
+    color: white;
+  }
+}
+
 
 .title
 {

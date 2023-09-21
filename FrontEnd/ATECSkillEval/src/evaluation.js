@@ -1,7 +1,12 @@
 import '../reset.css'
 import '../style.css'
 import '../styles/evaluation.css'
+import { createSidebar } from '../components/createSidebar.js'
+import createTopbar from "../components/createTopbar.js";
 
+
+createSidebar()
+createTopbar()
 
 const datePickerInput = document.getElementById('datePicker');
            
