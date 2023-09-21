@@ -8,7 +8,6 @@ margin-left: 250px;
 
 :root {
   --celestial-blue: #1996D0;
-  --white: #FFFFFF;
   --platinum: #DFE3E6;
   --flame: #E55823;
   --carrot-orange: #F2931F;
@@ -25,12 +24,10 @@ margin-left: 250px;
 }
 
 table.cool-table {
-border-collapse: collapse;
-width: 100%;
-max-width: 1200px;
-margin: 0 auto;
-margin-top: 30px;
-font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0;
 }
 
 table.cool-table caption {
