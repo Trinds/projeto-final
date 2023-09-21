@@ -1,5 +1,5 @@
 import './reset.css'
 import './style.css'
-import { createNavbar } from './components/createNavbar';
+import { createSidebar } from './components/createSidebar.js';
 
-createNavbar()
+createSidebar()

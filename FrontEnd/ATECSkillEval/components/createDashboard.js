@@ -1,5 +1,5 @@
 import '/styles/overviewpage.css'
-import dashboardCard from "./dashboardCard.js";
+import dashboardCard from "./dashboardCard.js"
 
 export default function createDashboard(){
     const dashboard = document.createElement('div')
