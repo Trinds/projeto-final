@@ -3,30 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../styles/students.css">
-    <link rel="stylesheet" href="../../styles/navbar.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../reset.css">
     <title>Formandos</title>
 </head>
 <body>
-    <aside id="navbar" class="navbar">
-        <ul>
-            <li id="user">User</li>
-            <li id="role">Role</li>
-        </ul>
-        <ul id="menu">
-            <li><a href="/pages/overviewPage.html"><i class="fa fa-home"></i> Início</a></li>
-            <li><a href="/pages/courses/"><i class="fa-regular fa-bookmark"></i> Cursos</a></li>
-            <li><a href="/pages/students/"><i class="fa-solid fa-user-graduate"></i> Formandos</a></li>
-            <li><a href="/pages/classrooms/"><i class="fa-solid fa-users"></i> Turmas</a></li>
-            <li><a href="/pages/reports/"><i class="fa fa-flag"></i> Relatórios</a></li>
-            <li><a href="/pages/evaluations/"><i class="fa-solid fa-check"></i> Avaliações</a></li>
-        </ul>
-        <ul id="sair">
-            <li><a href="/logout">SAIR</a></li>
-        </ul>
-    </aside>
-
 
     <div id="content">
 
@@ -44,8 +25,7 @@
                     placeholder="Insira o nome"
                     class="input-field"/><br>
             
-                    <label for="number">NºTel:</label>
-
+                    <label for="number">Contacto:</label>
                     <input type="tel" required
                     id="number" name="number" pattern="[0-9]{9}"
                     placeholder="Insira o nº Tel:"
@@ -69,7 +49,7 @@
                     <label for="birthdate">Data Nascimento:</label>
                     <input type="date" id="birthdate" name="birthdate" required><br><br><br><br>
             
-                    <label for="picture">Importar Foto:</label>
+                    <label for="picture">Importar Foto</label><br><br>
                     <input type="file" id="picture" name="picture" accept="image/*"><br><br><br>
             
                     <input type="submit" value="Submit">
