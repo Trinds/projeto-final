@@ -15,10 +15,10 @@ export function createSidebar() {
 
   navbar.innerHTML = `
 
-  <ul>
-    <li id="user">User</li>
-    <li id="role">Role</li>
-  </ul>
+    <ul>
+      <li id="user">User</li>
+      <li id="role">Role</li>
+    </ul>
 
     <ul id= "menu">
       <li id="toHome"><div class="icon"><i class="fa fa-home"></i></div>Início</li>
@@ -28,10 +28,11 @@ export function createSidebar() {
       <li id="toReports"><div class="icon"><i class="fa fa-flag"></i></div>Relatórios</li>
       <li id="toEvaluations"><div class="icon"><i class="fa-solid fa-check"></i></div>Avaliações</li>
     </ul>
-
+    
     <ul id="sair">
-      <li><a href="${logoutLink}">SAIR</a></li>
+      <li <li <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="${logoutLink}">SAIR </a></li>      
     </ul>
+    
   `;
 
   app.prepend(navbar)
