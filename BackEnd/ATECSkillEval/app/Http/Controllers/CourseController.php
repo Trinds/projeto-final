@@ -18,7 +18,7 @@ class CourseController extends Controller
     {
         try{
             $courses = Course::all();
-            return CourseResource::collection($courses);
+            return response()->json(CourseResource::collection($courses), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -105,6 +105,15 @@ class CourseController extends Controller
             $course->delete();
             return response()->json(['message' => 'Course deleted successfully'],205);
         }catch(Exception $e){
+            return response()->json(['error' => $e], 500);
+        }
+    }
+
+    public function search($search_term)
+    {
+        try {
+            return response()->json(CourseResource::collection(Course::where('name', 'like', '%' . $search_term . '%')->get()), 200);
+        } catch (Exception $e) {
             return response()->json(['error' => $e], 500);
         }
     }

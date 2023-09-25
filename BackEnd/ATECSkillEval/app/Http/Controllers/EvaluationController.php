@@ -18,7 +18,7 @@ class EvaluationController extends Controller
     {
         try{
             $evaluations = Evaluation::all();
-            return EvaluationResource::collection($evaluations);
+            return response()->json(EvaluationResource::collection($evaluations), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -42,7 +42,12 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+try {
+            $evaluation = Evaluation::create($request->all());
+            return response()->json(new EvaluationResource($evaluation), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -53,7 +58,11 @@ class EvaluationController extends Controller
      */
     public function show(Evaluation $evaluation)
     {
-        //
+        try{
+            return response()->json(new EvaluationResource($evaluation), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -76,7 +85,12 @@ class EvaluationController extends Controller
      */
     public function update(Request $request, Evaluation $evaluation)
     {
-        //
+try{
+            $evaluation->update($request->all());
+            return response()->json(new EvaluationResource($evaluation), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -87,6 +101,11 @@ class EvaluationController extends Controller
      */
     public function destroy(Evaluation $evaluation)
     {
-        //
+try{
+            $evaluation->delete();
+            return response()->json(['message' => 'Evaluation deleted successfully'], 205);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 }

@@ -17,7 +17,7 @@ class StudentController extends Controller
     {
         try{
             $students = Student::all();
-            return StudentResource::collection($students);
+            return response()->json(StudentResource::collection($students), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -41,7 +41,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $student = Student::create($request->all());
+            return response()->json(new StudentResource($student), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -52,7 +57,13 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+            
+            try{
+                $student->load('classroom');
+                return response()->json(new StudentResource($student), 200);
+            }catch(Exception $e){
+                return response()->json(['message' => $e], 500);
+            }
     }
 
     /**
@@ -75,7 +86,12 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        try{
+            $student->update($request->all());
+            return response()->json(new StudentResource($student), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -86,6 +102,20 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        try{
+            $student->delete();
+            return response()->json(null, 204);
+        }catch(Exception $e){
+            return response()->json(['message' => 'Student deleted successfully'], 205);
+        }
+    }
+
+    public function search($search_term)
+    {
+        try {
+            return response()->json(StudentResource::collection(Student::where('name', 'like', '%' . $search_term . '%')->get()), 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
+        }
     }
 }

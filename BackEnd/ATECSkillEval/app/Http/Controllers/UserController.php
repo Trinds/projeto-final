@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         try {
             $users = User::all();
-            return UserResource::collection($users);
+            return response()->json(UserResource::collection($users), 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
         }
@@ -43,6 +43,7 @@ class UserController extends Controller
     {
         try {
             $user = User::create($request->all());
+            $user->roles()->attach($request->role_id);
             return response()->json(new UserResource($user), 201);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
@@ -58,7 +59,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         try {
-            $user->load('user_role');
+            $user->load('roles');
             return response()->json(new UserResource($user), 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
@@ -87,7 +88,7 @@ class UserController extends Controller
     {
         try {
             $user->update($request->all());
-            $user->load('user_role');
+            $user->load('roles');
             return response()->json(new UserResource($user), 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
@@ -107,6 +108,15 @@ class UserController extends Controller
             return response()->json(['message' => 'User deleted successfully'], 205);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
+        }
+    }
+
+    public function search($search_term)
+    {
+        try {
+            return response()->json(UserResource::collection(User::where('name', 'like', '%' . $search_term . '%')->get()), 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
         }
     }
 }

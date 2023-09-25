@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use Illuminate\Http\Request;
-use App\Http\Resources\User_RoleResource;
+use App\Http\Resources\RoleResource;
 use Exception;
 
 class RoleController extends Controller
@@ -17,8 +17,8 @@ class RoleController extends Controller
     public function index()
     {
         try{
-            $user_roles = User_role::all();
-            return User_RoleResource::collection($user_roles);
+            $roles = role::all();
+            return response()->json(RoleResource::collection($roles), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -43,8 +43,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         try{
-            $user_role = User_role::create($request->all());
-            return response()->json(new User_RoleResource($user_role), 201);
+            $role = role::create($request->all());
+            return response()->json(new RoleResource($role), 201);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -59,7 +59,7 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         try{
-            return response()->json(new User_RoleResource($user_role), 200);
+            return response()->json(new RoleResource($role), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -86,8 +86,8 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         try{
-            $user_role->update($request->all());
-            return response()->json(new User_RoleResource($user_role), 200);
+            $role->update($request->all());
+            return response()->json(new RoleResource($role), 200);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
@@ -102,8 +102,8 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         try{
-            $user_role->delete();
-            return response()->json(['message' => 'UserRole deleted successfully'],205);
+            $role->delete();
+            return response()->json(['message' => 'Role deleted successfully'],205);
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }

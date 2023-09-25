@@ -18,7 +18,7 @@ class ClassroomController extends Controller
     {
         try {
             $classrooms = Classroom::all();
-            return ClassroomResource::collection($classrooms);
+            return response()->json(ClassroomResource::collection($classrooms), 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
         }
@@ -59,7 +59,6 @@ class ClassroomController extends Controller
     public function show(Classroom $classroom)
     {
         try {
-            $classroom->load('course');
             return response()->json(new ClassroomResource($classroom), 200);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
@@ -108,6 +107,15 @@ class ClassroomController extends Controller
             return response()->json(['message' => 'Classroom deleted successfully'], 205);
         } catch (Exception $e) {
             return response()->json(['message' => $e], 500);
+        }
+    }
+
+    public function search($search_term)
+    {
+        try {
+            return response()->json(ClassroomResource::collection(Classroom::where('edition', 'like', '%' . $search_term . '%')->get()), 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
         }
     }
 }

@@ -20,9 +20,6 @@ class StudentResource extends JsonResource
             'image' => $this->image,
             'email' => $this->email,
             'classroom' => new ClassroomResource($this->classroom),
-            'evaluation' => new EvaluationResource($this->evaluation),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ];
     }
 }

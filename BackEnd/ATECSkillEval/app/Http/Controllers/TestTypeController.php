@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Test_type;
 use Illuminate\Http\Request;
+use App\Http\Resources\TestTypeResource;
+use Exception;
 
 class TestTypeController extends Controller
 {
@@ -14,7 +16,12 @@ class TestTypeController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $test_types = Test_type::all();
+            return response()->json(TestTypeResource::collection($test_types), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -35,7 +42,12 @@ class TestTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+try {
+            $test_type = Test_type::create($request->all());
+            return response()->json(new TestTypeResource($test_type), 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -46,7 +58,11 @@ class TestTypeController extends Controller
      */
     public function show(Test_type $test_type)
     {
-        //
+        try{
+            return response() -> json(new TestTypeResource($test_type), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -69,7 +85,12 @@ class TestTypeController extends Controller
      */
     public function update(Request $request, Test_type $test_type)
     {
-        //
+        try{
+            $test_type->update($request->all());
+            return response()->json(new TestTypeResource($test_type), 200);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 
     /**
@@ -80,6 +101,11 @@ class TestTypeController extends Controller
      */
     public function destroy(Test_type $test_type)
     {
-        //
+        try{
+            $test_type->delete();
+            return response()->json(['message' => 'TestType deleted successfully'], 205);
+        }catch(Exception $e){
+            return response()->json(['message' => $e], 500);
+        }
     }
 }

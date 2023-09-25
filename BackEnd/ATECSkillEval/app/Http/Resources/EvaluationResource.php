@@ -16,10 +16,9 @@ class EvaluationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'student_id' => $this->student_id,
             'score' => $this->score,
-            'tests' => TestResource::collection($this->tests),
-
+            'student' => new StudentResource($this->student),
+            
         ];
     }
 }

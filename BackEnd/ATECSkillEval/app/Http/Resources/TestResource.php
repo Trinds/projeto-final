@@ -17,7 +17,8 @@ class TestResource extends JsonResource
     return [
         'id' => $this->id,
         'date' => $this->date,
-        'test_type' => new TestTypeResource($this->test_type),
+        'test_type_id' => new TestTypeResource($this->test_type),
+        'evaluation_id' => new EvaluationResource($this->evaluation),
     ];
 }
 }
