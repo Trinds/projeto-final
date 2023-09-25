@@ -4,7 +4,7 @@
     height: 100vh; 
 }
 
-.centered_form {
+.student_form {
     width: 100%;
     max-width: 600px; 
     min-height: 700px;
@@ -12,16 +12,17 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
 }
 
-.centered_form h1 {
+.student_form h1 {
     font-size: 2.25rem;
     line-height: 2.5rem;
     color: #787878;
     font-weight: 700;
     margin-left: 1.25rem;
+    text-align: center;
 }
 
 table{
@@ -55,11 +56,17 @@ table{
     }
 }
 
-form {
-    text-align: left; 
-}
 
 .table-container{
     background-color: var(--platinum);
     width: 100%;
+}
+
+.user_avatar{
+    
+    display: block;       
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 200px;
 }

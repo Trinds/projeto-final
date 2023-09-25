@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styles/students.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../reset.css">
+    <title>Formandos</title>
+
+    <script type="module" src="/src/studentsPage.js"></script>
+</head>
+<body>
+
+    <div id="content">
+
+        <div class="container">
+            <div class="student_form">
+                
+                <h1>Edição de aluno </h1><br><br>
+                
+                <form action="process_form.php" method="POST" enctype="multipart/form-data">
+
+                    <label for="name">Nome:</label>
+
+                    <input type="text" required
+                    id="name" name="name"
+                    value="NOME"
+                    class="input-field"/><br>
+            
+                    <label for="number">Contacto:</label>
+                    <input type="tel" required
+                    id="number" name="number" pattern="[0-9]{9}"
+                    value="123456789"
+                    class="input-field"/><br><br>
+
+                 
+                    <label for="classroom">Turma:</label>
+                    <input type="text" 
+                    id="classroom" name="classroom"
+                    value="TPSI09/22"
+                    class="input-field"/><br><br>
+            
+                    <label for="email">Email:</label>
+
+                    <input type="email" required
+                    id="email" name="email"
+                    value="someting@something.com"
+                    class="input-field"/><br><br>
+
+            
+                    <label for="birthdate">Data Nascimento:</label>
+                    <input type="date" id="birthdate" name="birthdate" 
+                    value="2023-09-25"
+                    required><br><br><br><br>
+                    
+            
+                    <label for="picture">Importar Foto</label><br><br>
+                    <input type="file" id="picture" name="picture" accept="image/*"><br><br><br>
+            
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        
+        </div>
+
+
+    </div>
+
+</body>
+</html>
