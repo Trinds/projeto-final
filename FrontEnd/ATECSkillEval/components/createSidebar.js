@@ -14,11 +14,16 @@ export function createSidebar() {
   navbar.className = 'navbar';
 
   navbar.innerHTML = `
-
-    <ul>
-      <li id="user">User</li>
-      <li id="role">Role</li>
-    </ul>
+  <ul>
+    <li class="app-title">
+        <svg width="6" height="39" viewBox="0 0 6 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 0L3 39" stroke="#F8D442" stroke-width="6"/>
+        </svg>
+        <p>ATEC SkillEval</p>
+    </li>
+    <li id="user">User</li>
+    <li id="role">Role</li>
+  </ul>
 
     <ul id= "menu">
       <li id="toHome"><div class="icon"><i class="fa fa-home"></i></div>Início</li>
@@ -32,7 +37,6 @@ export function createSidebar() {
     <ul id="sair">
       <li <li <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="${logoutLink}">SAIR </a></li>      
     </ul>
-    
   `;
 
   app.prepend(navbar)

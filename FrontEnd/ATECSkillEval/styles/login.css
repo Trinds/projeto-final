@@ -14,19 +14,6 @@
     border-radius: 0.75rem;
 }
 
-.login-title{
-    display: flex;
-    margin-bottom: 2rem;
-}
-.login-title h1{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    color: #787878;
-    font-weight: 700;
-    text-align: center;
-    margin-left: 1.25rem;
-}
-
 .login-form{
     display: flex;
     flex-direction: column;
