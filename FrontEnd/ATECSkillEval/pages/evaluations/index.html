@@ -3,37 +3,44 @@
   <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>ATECSkills Evaluations</title>
+      <link rel="stylesheet" href="../../styles/evaluation.css">  
+      <link rel="stylesheet" href="../../style.css">    
       <script type="module" src="/src/evaluation.js"></script>
+      <title>ATECSkills Evaluations</title>
   </head>
+
   <body>
 
     <div id="content">
         
-        <div class="title"><h1>Registar Avaliação</h1></div>
+        <h1 class="title">Registar Avaliação</h1>
+        
+        <div class="container" >
        
-        <div class="center">
-            <label for="select_aluno">Aluno:</label><br>
-            <select name="alunos" id="select_aluno">
-                <option value="" disabled selected>Selecionar aluno</option>
-            </select>
+            <div class=" evaluation_form">
+                <label for="select_aluno">Aluno:</label>
+                <select name="alunos" id="select_aluno">
+                    <option value="" disabled selected>Selecionar aluno</option>
+                </select>
 
-            <br><br>
-            <label for="select_test">Teste:</label><br>
-            <select name="testes" id="select_test">
-                <option value="" disabled selected>Selecionar Teste</option>
-            </select>
-            
-            <br><br>
-            <label>Data da avaliação:</label><br>
-            <input type="date" id="datePicker" name="datePicker">
+                <br><br><br><br>
+                <label for="select_test">Teste:</label>
+                <select name="testes" id="select_test">
+                    <option value="" disabled selected>Selecionar Teste</option>
+                </select>
+                
+                <br><br><br><br>
+                <label>Data da avaliação:</label>
+                <input type="date" id="datePicker" name="datePicker">
 
-            <br><br>
-            <label>Nota:</label><br>
-            <input type="text" placeholder="Inserir Nota">
+                <br><br><br><br>
+                <label>Nota:</label>
+                <input type="text" placeholder="Inserir Nota">
 
-            <br><br>
-            <button>Submeter</button>
+                <br><br><br><br><br><br><br><br>
+                <input type="submit" value="Submeter">
+                <br><br><br>
+            </div>
         </div>
     </div>
   </body>
