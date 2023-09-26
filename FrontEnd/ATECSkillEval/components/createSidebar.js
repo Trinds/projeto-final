@@ -14,18 +14,21 @@ export function createSidebar() {
   navbar.className = 'navbar';
 
   navbar.innerHTML = `
-  <ul>
-    <li class="app-title">
+  
+    <div class="app-title">
         <svg width="6" height="39" viewBox="0 0 6 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 0L3 39" stroke="#F8D442" stroke-width="6"/>
         </svg>
         <p>ATEC SkillEval</p>
+    </div>
+    <ul id="userInfo">
+    <li><div><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt=""></div>
     </li>
-    <li id="user">User</li>
-    <li id="role">Role</li>
-  </ul>
+        <li id="userName">Silvia Milhazes</li>
+        <li id="userRole">Secretária</li>
+    </ul>
 
-    <ul id= "menu">
+    <ul id="menu">
       <li id="toHome"><div class="icon"><i class="fa fa-home"></i></div>Início</li>
       <li id="toCourses"><div class="icon"><i class="fa-regular fa-bookmark"></i></div>Cursos</li>
       <li id="toStudents"><div class="icon"><i class="fa-solid fa-user-graduate"></i></div>Formandos</li>
@@ -35,7 +38,7 @@ export function createSidebar() {
     </ul>
     
     <ul id="sair">
-      <li id="toEvaluations">SAIR<div class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></li>      
+      <li id="toLogout">SAIR<div class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></li>      
     </ul>
   `;
 

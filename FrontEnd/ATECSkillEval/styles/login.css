@@ -48,7 +48,7 @@
 }
 
 .login-form-input-field::placeholder{
-    color: rgb(223 227 230);
+    color: var(--davys-gray);
 }
 
 .login-form button{

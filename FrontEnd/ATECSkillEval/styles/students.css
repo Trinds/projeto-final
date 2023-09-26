@@ -31,7 +31,7 @@ table{
     background-color: var(--platinum);
 }
 
-.users-table-row{
+.students-table-row{
     height: 6rem;
     background-color: white;
     min-width: 100rem;
