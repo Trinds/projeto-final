@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::apiResource('courses', 'CourseController');
 Route::apiResource('classrooms', 'ClassroomController');
@@ -32,3 +32,6 @@ Route::get('/users/search/{search_term}', 'UserController@search');
 Route::get('/students/search/{search_term}', 'StudentController@search');
 
 
+Route::post('/login', 'AuthController@login');
+
+Route::post('/register', 'AuthController@register');
