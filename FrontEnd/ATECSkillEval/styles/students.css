@@ -68,13 +68,11 @@ table{
     }
 }
 
-
 .table-container{
     width: 100%;
 }
 
 .user_avatar{
-    
     display: block;       
     margin: 0 auto;
     margin-top: 50px;

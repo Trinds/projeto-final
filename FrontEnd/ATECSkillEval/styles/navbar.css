@@ -9,12 +9,12 @@
 }
 .navbar ul {
     list-style-type: none;
-    padding: 5px;
+    padding: 0.5rem;
     margin: 1rem 1rem;
 }
 
 .navbar li {
-    padding: 10px;
+    padding: 1rem;
     color: white;
     margin: 1rem 0;
     border-radius: 0.5rem;
@@ -33,6 +33,12 @@
     text-decoration: none;
     color: white;
     display: block; 
+}
+
+#sair li{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 #menu li:hover,#sair li:hover {

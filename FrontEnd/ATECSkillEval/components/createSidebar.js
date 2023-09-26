@@ -35,7 +35,7 @@ export function createSidebar() {
     </ul>
     
     <ul id="sair">
-      <li <li <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="${logoutLink}">SAIR </a></li>      
+      <li id="toEvaluations">SAIR<div class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></li>      
     </ul>
   `;
 
