@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +30,5 @@ Route::get('/courses/search/{search_term}', 'CourseController@search');
 Route::get('/classrooms/search/{search_term}', 'ClassroomController@search');
 Route::get('/users/search/{search_term}', 'UserController@search');
 Route::get('/students/search/{search_term}', 'StudentController@search');
-Route::post('/login' , [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register'])->middleware('admin');
 
 
