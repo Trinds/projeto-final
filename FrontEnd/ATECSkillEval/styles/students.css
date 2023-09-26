@@ -1,19 +1,19 @@
-.container {    display: flex;
+.container {    
+    display: flex;
     justify-content: center; 
     align-items: center; 
     height: 100vh; 
 }
 
 .student_form {
-    width: 100%;
+    min-width: 600px;
     max-width: 600px; 
     min-height: 700px;
     max-height: 700px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
 }
 
 .student_form h1 {
@@ -21,7 +21,6 @@
     line-height: 2.5rem;
     color: #787878;
     font-weight: 700;
-    margin-left: 1.25rem;
     text-align: center;
 }
 
@@ -36,7 +35,7 @@ table{
     height: 6rem;
     background-color: white;
     min-width: 100rem;
-    border-radius: 1rem;
+    border-radius: 5rem;
 
     & div{
         overflow: hidden;
@@ -69,4 +68,8 @@ table{
     margin-top: 50px;
     margin-bottom: 50px;
     max-width: 200px;
+}
+
+i{
+    margin-left: 10px;
 }

@@ -148,3 +148,7 @@ input[type="file"]::before {
   cursor: pointer;
   padding: auto;
 }
+
+.icon{
+  margin-left: 5px;
+}
