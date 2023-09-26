@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Traits\HttpResponses;
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
+use App\Traits\HttpResponses;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\StoreUserRequest;
 
 class AuthController extends Controller
 {
@@ -27,11 +30,32 @@ class AuthController extends Controller
         return $this->success([
             'user' => $user,
             'token' => $user->createToken('API token of ' . $user->name)->plainTextToken
-
         ]);
     }
-    public function login()
+    public function login(LoginUserRequest $request)
     {
-        return 'this is my login';
-    }
+        // Validate the request data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        // Attempt to authenticate the user
+        $user = User::where('email', $request->email)->first();
+
+        // Check if the password is correct
+
+        if (!$user || $request->password !== $user->password) {
+            return $this->error('Authentication failed', 'Email or password is incorrect', 401);
+        }
+
+        // Generate a personal access token for the user
+        $token = $user->createToken('API token of ' . $user->name);
+    
+        return $this->success([
+            'user' => $user,
+            'token' => $token->plainTextToken,
+        ]);
+}
+
 }
