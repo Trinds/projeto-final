@@ -6,6 +6,7 @@
       <link rel="stylesheet" href="../../styles/evaluation.css">  
       <link rel="stylesheet" href="../../style.css">    
       <script type="module" src="/src/evaluation.js"></script>
+      <script  type="module" src="/services/getStudents.js"></script>
       <title>ATECSkills Evaluations</title>
   </head>
 
@@ -13,11 +14,17 @@
 
     <div id="content">
         
-        <h1 class="title">Registar Avaliação</h1>
+        <h1 class="title">Registar Teste</h1>
         
         <div class="container" >
        
             <div class=" evaluation_form">
+                <label for="select_class">Turma:</label>
+                <select name="class" id="select_class">
+                    <option value="" disabled selected>Selecionar Turma</option>
+                </select>       
+
+                <br><br><br><br>
                 <label for="select_aluno">Aluno:</label>
                 <select name="alunos" id="select_aluno">
                     <option value="" disabled selected>Selecionar aluno</option>
@@ -30,7 +37,7 @@
                 </select>
                 
                 <br><br><br><br>
-                <label>Data da avaliação:</label>
+                <label>Data do teste:</label>
                 <input type="date" id="datePicker" name="datePicker">
 
                 <br><br><br><br>
