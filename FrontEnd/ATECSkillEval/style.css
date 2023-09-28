@@ -4,8 +4,8 @@
 
 #content{
 margin-left: 250px;
-width: 100%;
 height: 100%;
+  width: calc(100% - 250px);
 }
 
 :root {
@@ -175,3 +175,66 @@ input[type="file"]::before {
   text-align: center;
   margin-left: 1.25rem;
 }
+
+/*#region tabelas*/
+.table-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+table{
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.table-row{
+  height: 8rem;
+  min-width: 100rem;
+  border-radius: 5rem;
+  -moz-border-radius: 1rem;
+  background-color: var(--platinum);
+
+  & div{
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+  }
+
+  & img{
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+
+  & .removeBtn {
+    color: var(--flame);
+  }
+
+  & .detailsBtn{
+    color: var(--lapis-lazuli);
+  }
+
+  & .editBtn{
+    color: var(--celestial-blue);
+  }
+
+  & td{
+    padding: 0.3rem 0.75rem;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  & td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  & td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+/*#endregion*/
