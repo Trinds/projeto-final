@@ -207,6 +207,18 @@ table{
     object-fit: cover;
   }
 
+  & .removeBtn {
+    color: var(--flame);
+  }
+
+  & .detailsBtn{
+    color: var(--lapis-lazuli);
+  }
+
+  & .editBtn{
+    color: var(--celestial-blue);
+  }
+
   & td{
     padding: 0.3rem 0.75rem;
     vertical-align: middle;
