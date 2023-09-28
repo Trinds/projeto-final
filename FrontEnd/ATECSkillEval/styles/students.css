@@ -28,19 +28,19 @@ table{
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 0 1rem;
-    background-color: var(--platinum);
 }
 
 .students-table-row{
-    height: 6rem;
-    background-color: white;
+    height: 7rem;
     min-width: 100rem;
     border-radius: 5rem;
     -moz-border-radius: 1rem;
+    background-color: var(--platinum);
 
     & div{
         overflow: hidden;
         border-radius: 50%;
+        display: flex;
     }
 
     & img{
