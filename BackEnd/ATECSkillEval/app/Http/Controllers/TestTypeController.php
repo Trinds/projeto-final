@@ -6,6 +6,7 @@ use App\Test_type;
 use Illuminate\Http\Request;
 use App\Http\Resources\TestTypeResource;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class TestTypeController extends Controller
 {
@@ -42,7 +43,11 @@ class TestTypeController extends Controller
      */
     public function store(Request $request)
     {
-try {
+        $validator =$this->validateTestTypeRequest($request);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
+        try {
             $test_type = Test_type::create($request->all());
             return response()->json(new TestTypeResource($test_type), 201);
         } catch (Exception $e) {
@@ -85,6 +90,10 @@ try {
      */
     public function update(Request $request, Test_type $test_type)
     {
+        $validator =$this->validateTestTypeRequest($request);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         try{
             $test_type->update($request->all());
             return response()->json(new TestTypeResource($test_type), 200);
@@ -107,5 +116,19 @@ try {
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
+    }
+
+    private function validateTestTypeRequest(Request $request)
+    {
+        $rules = [
+            'type' => 'required|max:50',
+        ];
+    
+        $customMessages = [
+            'required' => 'O campo tipo é obrigatório.',
+            'max' => 'O campo tipo deve ter no máximo 50 caracteres.',
+        ];
+    
+        return Validator::make($request->all(), $rules, $customMessages);
     }
 }

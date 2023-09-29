@@ -6,6 +6,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\RoleResource;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller
 {
@@ -42,6 +43,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $validator =$this->validateRoleRequest($request);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         try{
             $role = role::create($request->all());
             return response()->json(new RoleResource($role), 201);
@@ -85,6 +90,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $validator =$this->validateRoleRequest($request);
+            if($validator->fails()){
+                return response()->json(['errors' => $validator->errors()], 400);
+            }
         try{
             $role->update($request->all());
             return response()->json(new RoleResource($role), 200);
@@ -107,5 +116,19 @@ class RoleController extends Controller
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
+    }
+
+    private function validateRoleRequest(Request $request)
+    {
+        $rules = [
+            'name' => 'required|max:50',
+        ];
+    
+        $customMessages = [
+            'required' => 'O campo role é obrigatório.',
+            'max' => 'O campo role deve ter no máximo 50 caracteres.',
+        ];
+    
+        return Validator::make($request->all(), $rules, $customMessages);
     }
 }

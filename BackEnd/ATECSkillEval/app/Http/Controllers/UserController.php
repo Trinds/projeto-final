@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     /**
@@ -41,6 +42,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validator =$this->validateUserRequest($request);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         try {
             $user = User::create($request->all());
             $user->roles()->attach($request->role_id);
@@ -86,6 +91,34 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $inputData = $request->only(array_keys($request->all()));
+        $validationRules = [];
+        foreach ($inputData as $field => $value) {
+            if ($field == 'name' ) {
+                $validationRules[$field] = 'required|max:50';
+            }
+            if ($field == 'email') {
+                $validationRules[$field] = 'required|email|unique:users,email,' . $user->id . '|max:50';
+            }
+            if ($field == 'password') {
+                $validationRules[$field] = 'required|max:50';
+            }
+            if ($field == 'role_id') {
+                $validationRules[$field] = 'required|exists:roles,id';
+            }
+        }
+        $customMessages = [];
+        foreach ($inputData as $field => $value) {
+            $customMessages[$field.'.required'] = 'O campo '.$field.' é obrigatório.';
+            $customMessages[$field.'.email'] = 'O email introduzido não é válido.';
+            $customMessages[$field.'.unique'] = 'O email introduzido já está em uso.';
+            $customMessages[$field.'.exists'] = 'A role introduzida não existe.';
+            $customMessages[$field.'.max'] = 'O campo '.$field.' não pode exceder :max caracteres.';
+        }
+        $validator = Validator::make($request->all(), $validationRules, $customMessages);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         try {
             $user->update($request->all());
             $user->load('roles');
@@ -118,5 +151,26 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json(['error' => $e], 500);
         }
+    }
+
+    private function validateUserRequest(Request $request)
+    {
+        $rules = [
+            'name' => 'required|max:50',
+            'email' => 'required|email|unique:users|max:50',
+            'password' => 'required|max:50',
+            'role_id' => 'required|exists:roles,id',
+
+        ];
+    
+        $customMessages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'email' => 'O email introduzido não é válido.',
+            'unique' => 'O email introduzido já está em uso.',
+            'exists' => 'A role introduzida não existe.',
+            'max' => 'O campo :attribute não pode exceder :max caracteres.',
+        ];
+    
+        return Validator::make($request->all(), $rules, $customMessages);
     }
 }
