@@ -6,6 +6,7 @@ use App\Course;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Resources\CourseResource;
+use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
@@ -42,6 +43,11 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $this->validateCourseRequest($request);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
+
         try {
             $course = Course::create($request->all());
             return response()->json(new CourseResource($course), 201);
@@ -85,10 +91,15 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        try{
+        $validator = $this->validateCourseRequest($request);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
+
+        try {
             $course->update($request->all());
-            return response()->json(new CourseResource($course),200);
-        }catch(Exception $e){
+            return response()->json(new CourseResource($course), 200);
+        } catch (Exception $e) {
             return response()->json(['error' => $e], 500);
         }
     }
@@ -116,5 +127,17 @@ class CourseController extends Controller
         } catch (Exception $e) {
             return response()->json(['error' => $e], 500);
         }
+    }
+
+    private function validateCourseRequest(Request $request)
+    {
+        $rules = [
+            'name' => 'required|max:50',
+        ];
+        $customMessages = [
+            'required' => 'O nome é obrigatório.',
+            'max' => 'O nome não pode exceder :max caracteres.',
+        ];
+        return Validator::make($request->all(), $rules, $customMessages);
     }
 }
