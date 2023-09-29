@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursos</title>
+
+    <script type="module" src="/src/coursesPage.js"></script>
+</head>
+<body>
+
+    <div id="content">
+
+        <div class="container">
+            <div class="courseForm">                
+                <h1>Novo Curso:</h1><br><br>
+
+                <form action="process_form.php" method="POST" enctype="multipart/form-data">
+
+                    <label for="name">Nome:</label>
+
+                    <input type="text" required
+                    id="name" name="name"
+                    placeholder="Insira o nome"
+                    class="input-field"/><br><br>
+
+
+                    
+                    <label for="name">Sigla:</label>
+                    <input type="text" required
+                    id="name" name="name"
+                    placeholder="Insira a Sigla"
+                    class="input-field"/><br><br><br>
+            
+
+                    <input type="submit" value="Criar Curso"><br><br><br>
+                </form>
+
+
+                
+
+            </div>
+        
+        </div>
+
+
+    </div>
+
+</body>
+</html>
