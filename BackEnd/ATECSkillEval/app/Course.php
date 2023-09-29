@@ -10,6 +10,7 @@ class Course extends Model
 {
     use SoftDeletes;
     protected $fillable = ['name'];
+    
     public function classrooms()
     {
         return $this->hasMany(Classroom::class);

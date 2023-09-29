@@ -8,6 +8,5 @@ use Faker\Generator as Faker;
 $factory->define(Course::class, function (Faker $faker) {
     return [
 
-        'name' => $faker->randomElement(['TPSI', 'GRSIP', 'MAPCP', 'ARCI', 'GCE']),
     ];
 });
