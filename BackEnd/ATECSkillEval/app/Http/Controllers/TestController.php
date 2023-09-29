@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\TestResource;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Validator;
 
 class TestController extends Controller
 {
@@ -43,6 +44,10 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
+        $validator =$this->validateTestRequest($request);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         try{
             $test = Test::create($request->all());
             return response()->json(new TestResource($test), 201);
@@ -89,6 +94,30 @@ class TestController extends Controller
      */
     public function update(Request $request, Test $test)
     {
+        $inputData = $request->only(array_keys($request->all()));
+        $validationRules = [];
+        foreach ($inputData as $field => $value) {
+            if ($field == 'evaluation_id') {
+                $validationRules[$field] = 'required|exists:evaluations,id';
+            } else if ($field == 'test_type_id') {
+                $validationRules[$field] = 'required|exists:test_types,id';
+            } else if ($field == 'date') {
+                $validationRules[$field] = 'required|date';
+            } else {
+                $validationRules[$field] = 'required';
+            }
+        }
+        $customMessages = [];
+        foreach ($inputData as $field => $value) {
+            $customMessages[$field.'.required'] = 'O campo '.$field.' é obrigatório.';
+            $customMessages[$field.'.exists'] = 'A '.$field.' introduzida não existe.';
+            $customMessages[$field.'.date'] = 'A data introduzida não é válida.';
+        }
+        $validator = Validator::make($request->all(), $validationRules, $customMessages);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
+
         try{
             $test = Test::findOrFail($test->id);
             $test->update($request->all());
@@ -113,5 +142,23 @@ class TestController extends Controller
         }catch(Exception $e){
             return response()->json(['message' => $e], 500);
         }
+    }
+
+    private function validateTestRequest(Request $request)
+    {
+        $rules = [
+            'evaluation_id' => 'required|exists:evaluations,id',
+            'test_type_id' => 'required|exists:test_types,id',
+            'date' => 'required|date',
+        ];
+    
+        $customMessages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'date' => 'A data introduzida não é válida.',
+            'exists' => 'A :attribute introduzida não existe.',
+            
+        ];
+    
+        return Validator::make($request->all(), $rules, $customMessages);
     }
 }
