@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Course extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'abbreviation'
+    ];
     public function classrooms()
     {
         return $this->hasMany(Classroom::class);

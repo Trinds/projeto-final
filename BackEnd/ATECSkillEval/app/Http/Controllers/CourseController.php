@@ -132,7 +132,7 @@ class CourseController extends Controller
     private function validateCourseRequest(Request $request)
     {
         $rules = [
-            'name' => 'required|max:50',
+            'name' => 'required|max:250',
         ];
         $customMessages = [
             'required' => 'O nome é obrigatório.',
