@@ -2,7 +2,7 @@
 const dataArray = [
     ['January', [10, 5]],
     ['February', [8, 3]],
-    ['March', [9, 4]],
+    ['March', [9, 15]],
 ];
 
 // Function to create the bar chart
