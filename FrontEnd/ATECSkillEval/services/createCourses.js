@@ -1,6 +1,8 @@
 import {API_COURSES} from '/api.env'
+import { messageModal } from '../components/message,js';
 
-export async function createCourse(name, abbreviation) {
+export async function createCourse(name, abbreviation) 
+{
     try {
         const jsonData = {
             "name": name,
@@ -22,8 +24,10 @@ export async function createCourse(name, abbreviation) {
 
         const data = await response.json();
 
-        console.log('New row created:', data);
-    } catch (error) {
+        messageModal(name, abbreviation);        ;
+    } 
+    catch (error) 
+    {
         console.error('Error creating row:', error);
     }
 }//-----------------------------------------
