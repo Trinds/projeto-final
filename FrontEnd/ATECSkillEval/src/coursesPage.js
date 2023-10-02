@@ -11,9 +11,10 @@ createTopbar()
 
 if (window.location.pathname.endsWith("courses/") || window.location.pathname.endsWith("index.html"))
         window.addEventListener("load", populateCourses);
-
-if (window.location.pathname.endsWith("courses/create.html"))
-      window.addEventListener("load", getNameAbbreviation);
+else if (window.location.pathname.endsWith("courses/create.html"))
+        window.addEventListener("load", courseCreation);
+else if (window.location.pathname.endsWith("courses/details.html"))
+        window.addEventListener("load", courseEdition);
 
 
 async function populateCourses() 
@@ -68,17 +69,32 @@ async function populateCourses()
     }
   }//---------------------------------------------------
   
-async  function getNameAbbreviation()
-{
-  const form = document.querySelector('form');  
-
-  form.addEventListener('submit', function (event) 
-  {    
-    event.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const abbreviation = document.getElementById('abbreviation').value;  
+  async  function courseCreation()
+  {
+    const form = document.querySelector('form');  
   
-    createCourse(name,abbreviation)
-  });
-}//-----------------------------------------------------
+    form.addEventListener('submit', function (event) 
+    {    
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const abbreviation = document.getElementById('abbreviation').value;  
+    
+      createCourse(name,abbreviation)
+    });
+  }//-----------------------------------------------------  
+  
+  async  function courseEdition(id)
+  {
+    const form = document.querySelector('form');  
+  
+    form.addEventListener('submit', function (event) 
+    {    
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const abbreviation = document.getElementById('abbreviation').value;  
+    
+      createCourse(id,name,abbreviation)
+    });
+  }//-----------------------------------------------------
