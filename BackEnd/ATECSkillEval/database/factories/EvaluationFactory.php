@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Evaluation::class, function (Faker $faker) {
     return [
         'student_id' => rand(1, 30),
-        'score' => $faker->numberBetween(0, 100),
+        'test_id' => rand(1,6),
+        'score' => $faker->numberBetween(0, 20),
     ];
 });

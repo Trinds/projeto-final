@@ -21,9 +21,9 @@ class Student extends Model
         return $this->belongsTo(Classroom::class);
     }
 
-    public function evaluation()
+    public function evaluations()
     {
-        return $this->hasOne(Evaluation::class);
+        return $this->hasMany(Evaluation::class);
     }
     
 }

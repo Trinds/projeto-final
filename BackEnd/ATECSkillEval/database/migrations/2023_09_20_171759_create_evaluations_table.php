@@ -14,11 +14,13 @@ class CreateEvaluationsTable extends Migration
     public function up()
     {
         Schema::create('evaluations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('student_id')->constrained();
+            $table->foreignId('student_id');
+            $table->foreignId('test_id');
             $table->double('score');
             $table->timestamps();
             $table->softDeletes();
+
+           
         });
     }
 
