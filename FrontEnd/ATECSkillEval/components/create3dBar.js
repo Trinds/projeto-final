@@ -40,8 +40,9 @@ function createBarChart(data) {
                 y: {
                     display: true, // Hide y-axis labels
                     beginAtZero: true,
-                }
+                },
             },
+            responsive:true,
             plugins: {
                 legend: {
                     display: false // Hide the legend

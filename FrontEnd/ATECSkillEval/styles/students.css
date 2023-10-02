@@ -10,16 +10,14 @@
     flex-direction: column;
     padding: 2rem;
     gap: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
+    margin-right: 5rem;
 }
 
 .student-card h1 {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
     color: #787878;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
 }
 
@@ -30,8 +28,7 @@
 }
 
 td i{
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0 10px;
 }
 
 
@@ -41,7 +38,7 @@ td i{
 "chart details"
 "evaluations evaluations";
     gap: 2rem;
-    padding: 2rem;
+    padding: 5rem;
 }
 
 .details-container{
@@ -50,6 +47,7 @@ td i{
 
 .chart-container{
     grid-area: chart;
+    max-width: 50rem;
 }
 
 .evaluations-container{
@@ -57,63 +55,7 @@ td i{
 }
 
 
-  
-  td i {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    text-align: center;
-    line-height: 50px;
-    font-size: 30px;
-    margin: 0 10px;
-    display: block;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid #fff;
-    z-index: 1;
-  }
-  
-  td i{
-    position: relative;
-    color: #262626;
-    transition: .5s;
-    z-index: 3;
-  }
-  
   td i:hover {
     color: #fff;
-    transform: rotateY(360deg);
-  }
-  
-  td i before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f00;
-    transition: .5s;
-    z-index: 2;
-  }
-  
-  td i:hover:before {
-    top: 0;
-  }
-  
-  td i:nth-child(1) a:before{
-    background: #3b5999;
-  }
-  
-  td i:nth-child(2) a:before{
-    background: #55acee;
-  }
-  
-  td i:nth-child(3) a:before {
-    background: #0077b5;
-  }
-  
-  td i:nth-child(4) a:before {
-    background: #dd4b39;
+    cursor: pointer;
   }
