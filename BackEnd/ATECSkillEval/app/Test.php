@@ -13,11 +13,11 @@ class Test extends Model
         'test_type_id',
         'date',
     ];
-    public function evaluation()
-    {
-        return $this->belongsTo(Evaluation::class);
-    }   
 
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
     public function test_type()
     {
         return $this->belongsTo(Test_type::class);

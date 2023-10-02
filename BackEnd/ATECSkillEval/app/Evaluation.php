@@ -9,15 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 class Evaluation extends Model
 {
     protected $fillable = [
-        'score', 'student_id'
+        'score', 'student_id', 'test_id'
     ];
     public function student()
     {
         return $this->belongsTo(Student::class);
     }
 
-    public function tests()
+    public function test()
     {
-        return $this->hasMany(Test::class);
+        return $this->belongsTo(Test::class);
     }
 }
