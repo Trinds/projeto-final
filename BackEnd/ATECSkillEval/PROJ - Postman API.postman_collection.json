@@ -205,7 +205,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/",
+							"raw": "API_COURSES",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -229,7 +229,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/3",
+							"raw": "API_COURSES3",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -263,7 +263,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/",
+							"raw": "API_COURSES",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -297,7 +297,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/2",
+							"raw": "API_COURSES2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -321,7 +321,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/5",
+							"raw": "API_COURSES5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -345,7 +345,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/courses/search/tp",
+							"raw": "API_COURSESsearch/tp",
 							"protocol": "http",
 							"host": [
 								"127",

@@ -1,6 +1,8 @@
+import {API_COURSES} from '/api.env'
+
 export async function getAllCourses()
 {
-    const response = await fetch('http://127.0.0.1:8000/api/courses/');
+    const response = await fetch(API_COURSES);
     const data = await response.json();
     return data;
 }

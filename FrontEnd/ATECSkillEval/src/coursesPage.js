@@ -1,15 +1,19 @@
 import '../reset.css'
 import '../style.css'
 import '../styles/courses.css'
-import { createSidebar } from '../components/createSidebar.js'
 import createTopbar from "../components/createTopbar.js";
+import { createSidebar } from '../components/createSidebar.js'
 import { getAllCourses } from '../services/getCourses';
+import { createCourse } from '../services/createCourses';
 
 createSidebar()
 createTopbar()
 
 if (window.location.pathname.endsWith("courses/") || window.location.pathname.endsWith("index.html"))
         window.addEventListener("load", populateCourses);
+
+if (window.location.pathname.endsWith("courses/create.html"))
+      window.addEventListener("load", getNameAbbreviation);
 
 
 async function populateCourses() 
@@ -37,7 +41,7 @@ async function populateCourses()
         row.className = "table-row";
   
         const siglaCell = document.createElement("td");
-        siglaCell.textContent = course.id;
+        siglaCell.textContent = course.abbreviation;
   
         const nomeCell = document.createElement("td");
         nomeCell.textContent = course.name;
@@ -53,8 +57,7 @@ async function populateCourses()
   
         row.appendChild(siglaCell);
         row.appendChild(nomeCell);
-        row.appendChild(actionsCell);
-  
+        row.appendChild(actionsCell);  
   
         table.appendChild(row);
     });
@@ -63,5 +66,19 @@ async function populateCourses()
     {
       console.error("Error fetching data:", error);
     }
-  }
+  }//---------------------------------------------------
   
+async  function getNameAbbreviation()
+{
+  const form = document.querySelector('form');  
+
+  form.addEventListener('submit', function (event) 
+  {    
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const abbreviation = document.getElementById('abbreviation').value;  
+  
+    createCourse(name,abbreviation)
+  });
+}//-----------------------------------------------------
