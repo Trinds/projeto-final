@@ -14,7 +14,7 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // students with classroom and course
     {
         try{
             $students = Student::all();
@@ -40,7 +40,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $validator = $this->validateStudentRequest($request);
 
@@ -62,7 +62,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $student) // /students/{student}
     {
             
             try{
@@ -91,7 +91,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Student $student) // /students/{student}
     {
         $inputData = $request->only(array_keys($request->all()));
         $validationRules = [];
@@ -148,8 +148,8 @@ class StudentController extends Controller
             return response()->json(['message' => 'Student deleted successfully'], 205);
         }
     }
-
-    public function search($search_term)
+    //search student by name
+    public function search($search_term) // /students/search/{search_term}
     {
         try {
             return response()->json(StudentResource::collection(Student::where('name', 'like', '%' . $search_term . '%')->get()), 200);
@@ -157,7 +157,7 @@ class StudentController extends Controller
             return response()->json(['error' => $e], 500);
         }
     }
-
+    //validate student request
     private function validateStudentRequest(Request $request)
     {
         $rules = [
@@ -179,4 +179,23 @@ class StudentController extends Controller
     
         return Validator::make($request->all(), $rules, $customMessages);
     }
+    //get evaluations of a student
+    public function getEvaluations($student_id) // /students/{student_id}/evaluations
+    {
+        try {
+            $student = Student::find($student_id);
+            if (!$student) {
+                return response()->json(['error' => 'Formando não encontrado'], 404);
+            }
+            $student->load('evaluation');
+            $data = [
+                'student' => new StudentResource($student),
+                'evaluation' => $student->evaluation()->get()
+            ]; 
+            return response()->json($data, 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
+        }
+    }
+    
 }

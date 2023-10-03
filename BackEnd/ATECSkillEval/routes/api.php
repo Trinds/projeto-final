@@ -30,7 +30,9 @@ Route::get('/courses/search/{search_term}', 'CourseController@search');
 Route::get('/classrooms/search/{search_term}', 'ClassroomController@search');
 Route::get('/users/search/{search_term}', 'UserController@search');
 Route::get('/students/search/{search_term}', 'StudentController@search');
-
+Route::get('/course/{course_id}/classrooms', 'CourseController@getClassrooms');
+Route::get('/classroom/{classroom_id}/students', 'ClassroomController@getStudents');
+Route::get('/students/{student_id}/evaluations', 'StudentController@getEvaluations');
 
 Route::post('/login', 'AuthController@login');
 

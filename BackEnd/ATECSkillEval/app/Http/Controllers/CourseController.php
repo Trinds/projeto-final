@@ -15,7 +15,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // GET /courses
     {
         try{
             $courses = Course::all();
@@ -41,7 +41,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // POST /courses
     {
         $validator = $this->validateCourseRequest($request);
         if ($validator->fails()) {
@@ -62,7 +62,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Course $course) // GET /courses/{course}
     {
         try{
             return response()->json(new CourseResource($course),200);
@@ -89,7 +89,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, Course $course) // PUT /courses/{course}
     {
         $validator = $this->validateCourseRequest($request);
         if ($validator->fails()) {
@@ -110,7 +110,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Course $course) // DELETE /courses/{course}
     {
         try{
             $course->delete();
@@ -120,7 +120,8 @@ class CourseController extends Controller
         }
     }
 
-    public function search($search_term)
+    // Search courses by name
+    public function search($search_term) 
     {
         try {
             return response()->json(CourseResource::collection(Course::where('name', 'like', '%' . $search_term . '%')->get()), 200);
@@ -129,6 +130,7 @@ class CourseController extends Controller
         }
     }
 
+    // Validate course request
     private function validateCourseRequest(Request $request)
     {
         $rules = [
@@ -139,5 +141,24 @@ class CourseController extends Controller
             'max' => 'O nome não pode exceder :max caracteres.',
         ];
         return Validator::make($request->all(), $rules, $customMessages);
+    }
+
+    // Get classrooms from a course
+    public function getClassrooms($course_id) // GET /course/{course_id}/classrooms
+    {
+        try {
+            $course = Course::find($course_id);
+            if (!$course) {
+                return response()->json(['error' => 'Curso não encontrado'], 404);
+            }
+            $course->load('classrooms');
+            $data = [
+                'course' => new CourseResource($course),
+                'classrooms' => $course->classrooms()->get()
+            ];
+            return response()->json($data, 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
+        }
     }
 }

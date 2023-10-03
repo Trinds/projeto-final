@@ -15,7 +15,7 @@ class ClassroomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // GET /classrooms with Courses
     {
         try {
             $classrooms = Classroom::all();
@@ -61,7 +61,7 @@ class ClassroomController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(Classroom $classroom)
+    public function show(Classroom $classroom) // GET /classrooms/{classroom} with Course
     {
         try {
             return response()->json(new ClassroomResource($classroom), 200);
@@ -88,7 +88,7 @@ class ClassroomController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(Request $request, Classroom $classroom) // PUT /classrooms/{classroom} with Course
     {
         $inputData = $request->only(array_keys($request->all()));
         $validationRules = [];
@@ -142,7 +142,8 @@ class ClassroomController extends Controller
         }
     }
 
-    public function search($search_term)
+    // Search classrooms by edition
+    public function search($search_term) // GET /classrooms/search/{search_term} with Course
     {
         try {
             return response()->json(ClassroomResource::collection(Classroom::where('edition', 'like', '%' . $search_term . '%')->get()), 200);
@@ -151,7 +152,8 @@ class ClassroomController extends Controller
         }
     }
 
-    private function validateClassroomRequest(Request $request)
+    // Validate classroom request
+    private function validateClassroomRequest(Request $request) 
     {
         $rules = [
             'course_id' => 'required|exists:courses,id',
@@ -166,5 +168,25 @@ class ClassroomController extends Controller
             'after' => 'A data de fim deve ser posterior à data de início.',
         ];
         return Validator::make($request->all(), $rules, $customMessages);
+    }
+
+    // Get students from a classroom
+    public function getStudents($classroom_id) // GET /classroom/{classroom_id}/students
+    {
+        try {
+            $classroom = Classroom::find($classroom_id);
+            if (!$classroom) {
+                return response()->json(['message' => 'Classroom não enconstrada'], 404);
+            }
+            $classroom->load('students');
+            $data = [
+                'classroom' => (new ClassroomResource($classroom)),
+                'students' => $classroom->students()->get(),
+            ];
+            return response()->json($data, 200);
+            
+        } catch (Exception $e) {
+            return response()->json(['error' => $e], 500);
+        }
     }
 }

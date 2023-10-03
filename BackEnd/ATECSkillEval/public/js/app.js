@@ -49536,8 +49536,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\PROJ Final\projeto-final\BackEnd\ATECSkillEval\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\PROJ Final\projeto-final\BackEnd\ATECSkillEval\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\egcp0\OneDrive\Documentos\PROJ\projeto-final\BackEnd\ATECSkillEval\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\egcp0\OneDrive\Documentos\PROJ\projeto-final\BackEnd\ATECSkillEval\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
