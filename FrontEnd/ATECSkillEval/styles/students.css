@@ -46,8 +46,8 @@ td i{
 }
 
 .chart-container{
-    /* grid-area: chart;
-    max-width: 50rem; */
+    grid-area: chart;
+    min-width: 30rem;
     max-width: 100%;  /* Ensure it doesn't grow beyond the parent's width */
     max-height: 100%; /* Ensure it doesn't grow beyond the parent's height */
     width: auto;      /* Allow the width to adjust */
@@ -57,9 +57,7 @@ td i{
 .student-eval-chart
 {
     max-width: 100%;  /* Ensure it doesn't grow beyond the parent's width */
-    max-height: 100%; /* Ensure it doesn't grow beyond the parent's height */
-    width: auto;      /* Allow the width to adjust */
-    height: auto; 
+    max-height: 100%;
 
 }
 

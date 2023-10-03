@@ -24,6 +24,8 @@ function createBarChart(data) {
                     backgroundColor: 'rgb(233, 184, 36)', // Bar color for value 1
                     borderColor: 'rgb(216, 63, 49)', // Border color for value 1
                     borderWidth: 1, // Border width for value 1
+                    barPercentage: 0.9,
+                    categoryPercentage:0.3
                 },
                 {
                     label: 'Value 2', // Label for the second dataset
@@ -31,7 +33,9 @@ function createBarChart(data) {
                     backgroundColor: 'rgb(63, 120, 216)', // Bar color for value 2
                     borderColor: 'rgb(63, 120, 216)', // Border color for value 2
                     borderWidth: 1, // Border width for value 2
-                }
+                    barPercentage: 0.9,
+                    categoryPercentage:0.3
+                },
             ],
         },
         options: {
@@ -41,7 +45,7 @@ function createBarChart(data) {
                 },
                 y: {
                     display: true, // Hide y-axis labels
-                    beginAtZero: true,
+                    beginAtZero: true
                 },
             },
             responsive:true,
