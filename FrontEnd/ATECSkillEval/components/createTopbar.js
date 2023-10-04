@@ -1,8 +1,9 @@
 import '/styles/topbar.css'
-import { CurentPage } from '../services/currentPage'
+import { CurrentPage } from '../services/currentPage'
 
-const page= CurentPage();
+const page= CurrentPage();
 const btnDesc = 'Adicionar '+ page
+
 export default function createTopbar(){
     const topbar = document.createElement('div')
     topbar.classList.add('top-bar')
@@ -16,7 +17,7 @@ export default function createTopbar(){
 
     const addButton = topbar.querySelector('#addButton');
 
-    if(window.location.pathname.includes("create"))
+    if(window.location.pathname.includes("create") || window.location.pathname.includes("over"))
         addButton.classList.add("hide")
     else
         addButton.classList.remove("hide")
