@@ -95,6 +95,6 @@ async function populateCourses()
       const name = document.getElementById('name').value;
       const abbreviation = document.getElementById('abbreviation').value;  
     
-      createCourse(id,name,abbreviation)
+      updateCourse(id,name,abbreviation)
     });
   }//-----------------------------------------------------

@@ -23,18 +23,34 @@ export function messageModal(text1, text2)
   modalContent.style.textAlign = 'center'
   modalContent.style.backgroundColor = '#313131ee'
   modalContent.style.color = 'white'
-  //text 1
-  const h1 = document.createElement('h3');
-  h1.textContent=text1
+
+
+  const h1 = document.createElement('div');
+  h1.innerHTML = text1;
   h1.style.color = 'white';
   h1.style.margin = 'auto';
   h1.style.marginTop = '50px';
-  //text 2
-  const h2 = document.createElement('h3');
-  h2.textContent=text2
+
+  const h2 = document.createElement('div');
+  h2.innerHTML = text2;
   h2.style.color = 'white';
   h2.style.margin = 'auto';
   h2.style.marginTop = '50px';
+
+
+
+//   //text 1
+//   const h1 = document.createElement('h3');
+//   h1.textContent=text1
+//   h1.style.color = 'white';
+//   h1.style.margin = 'auto';
+//   h1.style.marginTop = '50px';
+//   //text 2
+//   const h2 = document.createElement('h3');
+//   h2.textContent=text2
+//   h2.style.color = 'white';
+//   h2.style.margin = 'auto';
+//   h2.style.marginTop = '50px';
   //close buton
   const closeButton = document.createElement('button');
   closeButton.textContent = 'CLOSE';

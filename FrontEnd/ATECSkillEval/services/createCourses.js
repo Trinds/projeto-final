@@ -24,7 +24,9 @@ export async function createCourse(name, abbreviation)
 
         const data = await response.json();
 
-        messageModal(name, abbreviation);        ;
+        const t1='curso creado com sucesso'
+        const t2='NOME: ' + name + '<br> <br> SIGLA:  ' + abbreviation
+        messageModal(t1,t2);      
     } 
     catch (error) 
     {
